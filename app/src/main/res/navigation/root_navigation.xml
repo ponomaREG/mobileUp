@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_navigation"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="org.disf.app.mobileuptrainee.presentation.fragment.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_fragment_to_detail_crypto_fragment"
+            app:destination="@id/detail_crypto_fragment"
+            app:enterAnim="@anim/fade_in_quick"
+            app:exitAnim="@anim/fade_out_quick"
+            app:popEnterAnim="@anim/fade_in_quick"
+            app:popExitAnim="@anim/fade_out_quick">
+            <argument
+                android:name="coin"
+                app:argType="org.disf.app.mobileuptrainee.domain.model.CoinsMarket" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_crypto_fragment"
+        android:name="org.disf.app.mobileuptrainee.presentation.fragment.detail.CoinDetailFragment"
+        tools:layout="@layout/fragment_detail_crypto">
+        <argument
+            android:name="coin"
+            app:argType="org.disf.app.mobileuptrainee.domain.model.CoinsMarket" />
+    </fragment>
+</navigation>
