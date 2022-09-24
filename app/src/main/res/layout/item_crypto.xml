@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:paddingHorizontal="@dimen/padding_16dp"
+    android:paddingVertical="@dimen/padding_8dp">
+
+    <ImageView
+        android:id="@+id/crypto_icon_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/crypto_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.CoinItemPrimaryField"
+        app:layout_constraintStart_toEndOf="@id/crypto_icon_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bitcoin" />
+
+    <TextView
+        android:id="@+id/crypto_short_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.CoinItemSecondaryField"
+        app:layout_constraintStart_toStartOf="@id/crypto_name_tv"
+        app:layout_constraintTop_toBottomOf="@id/crypto_name_tv"
+        tools:text="BTH" />
+
+    <TextView
+        android:id="@+id/crypto_cost_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.CoinItemPrimaryField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="$20,000.74" />
+
+    <TextView
+        android:id="@+id/crypto_difference_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.CoinItemSecondaryField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crypto_cost_tv"
+        tools:text="+ 4.05%"
+        tools:textColor="@color/green" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
