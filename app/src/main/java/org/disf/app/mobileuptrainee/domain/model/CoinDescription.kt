@@ -1,8 +1,9 @@
 package org.disf.app.mobileuptrainee.domain.model
 
 data class CoinDescription(
-    var id: String,
-    var name: String,
-    var description: String,
-    var categories: ArrayList<String>,
+    val id: String,
+    val name: String,
+    val description: String,
+    val categories: ArrayList<String>,
+    val image: String,
 )
