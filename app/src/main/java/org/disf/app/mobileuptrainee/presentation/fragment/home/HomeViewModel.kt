@@ -9,6 +9,7 @@ import org.disf.app.mobileuptrainee.presentation.base.BaseViewModel
 import org.disf.app.mobileuptrainee.presentation.base.State
 import org.disf.app.mobileuptrainee.presentation.ext.safeLaunch
 import org.disf.app.mobileuptrainee.presentation.model.event.NavigationEvent
+import org.disf.app.mobileuptrainee.presentation.model.event.ShowErrorSnackBar
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,6 +25,10 @@ class HomeViewModel @Inject constructor(
     }
 
     fun onRetryQueryClicked() {
+        loadMarketCoins()
+    }
+
+    fun onRefreshPulled() {
         loadMarketCoins()
     }
 
@@ -63,8 +68,15 @@ class HomeViewModel @Inject constructor(
                 }
             },
             onError = {
-                updateState {
-                    copy(isLoading = false, isError = true)
+                if (state.coinsMarket.isNotEmpty()) {
+                    updateState {
+                        copy(isLoading = false)
+                    }
+                    submitEvent(ShowErrorSnackBar)
+                } else {
+                    updateState {
+                        copy(isLoading = false, isError = true)
+                    }
                 }
             }
         )

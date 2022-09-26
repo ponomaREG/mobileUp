@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import org.disf.app.mobileuptrainee.R
 import org.disf.app.mobileuptrainee.presentation.model.event.NavigationEvent
 import org.disf.app.mobileuptrainee.presentation.model.event.PopNavigationEvent
-import org.disf.app.mobileuptrainee.presentation.model.event.ShowToastEvent
+import org.disf.app.mobileuptrainee.presentation.model.event.ShowErrorSnackBar
 
 abstract class BaseFragment<B : ViewBinding, S : State, V : BaseViewModel<S>> : Fragment() {
 
@@ -58,10 +59,16 @@ abstract class BaseFragment<B : ViewBinding, S : State, V : BaseViewModel<S>> : 
         _binding = null
     }
 
-    fun collectEvent(event: Event) {
+    protected open fun collectEvent(event: Event) {
         when (event) {
-            is ShowToastEvent -> {
-                Toast.makeText(requireContext(), event.message, Toast.LENGTH_SHORT).show()
+            is ShowErrorSnackBar -> {
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.error_happens),
+                    Snackbar.LENGTH_SHORT
+                )
+                    .setBackgroundTint(requireContext().getColor(R.color.error))
+                    .show()
             }
             is NavigationEvent -> {
                 findNavController().navigate(event.direction)

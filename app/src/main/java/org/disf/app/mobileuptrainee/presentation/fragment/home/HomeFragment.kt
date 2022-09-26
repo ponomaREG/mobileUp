@@ -32,12 +32,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeState, HomeViewModel>
         zeroscreen.zeroscreenRetryButton.setOnClickListener {
             viewModel.onRetryQueryClicked()
         }
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.onRefreshPulled()
+        }
     }
 
     override fun collectState(state: HomeState) = with(binding) {
+        swipeRefreshLayout.isEnabled = !state.isError && state.coinsMarket.isNotEmpty()
+        swipeRefreshLayout.isRefreshing = state.isLoading && state.coinsMarket.isNotEmpty()
         zeroscreen.root.isVisible = state.isError && !state.isLoading
         cryptoListRv.isInvisible = state.isError
-        loadingIndicator.isVisible = state.isLoading
+        loadingIndicator.isVisible = state.isLoading && state.coinsMarket.isEmpty()
         if (state.coinsMarket.isNotEmpty()) cryptoAdapter.setItems(state.coinsMarket)
     }
 }

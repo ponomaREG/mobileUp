@@ -44,9 +44,11 @@ class HomeAdapter constructor(
 
     @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: List<CoinsMarket>) {
-        this.items.clear()
-        this.items.addAll(items)
-        notifyDataSetChanged()
+        if (this.items != items) {
+            this.items.clear()
+            this.items.addAll(items)
+            notifyDataSetChanged()
+        }
     }
 
     class ViewHolder(
