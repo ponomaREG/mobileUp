@@ -15,7 +15,9 @@ import org.disf.app.mobileuptrainee.presentation.base.BaseFragment
 import org.disf.app.mobileuptrainee.presentation.ext.load
 import javax.inject.Inject
 
-// TODO: Small image ?
+/**
+ * Экран детального описание криптовалюты
+ */
 @AndroidEntryPoint
 class CoinDetailFragment :
     BaseFragment<FragmentDetailCryptoBinding, CoinDetailState, CoinDetailViewModel>() {

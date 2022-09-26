@@ -8,6 +8,11 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * Абстрактный класс вьюмодели
+ * @param S - Класс стейта View
+ * @see State
+ */
 abstract class BaseViewModel<S : State> : ViewModel() {
 
     protected abstract val initialState: S
@@ -34,6 +39,13 @@ abstract class BaseViewModel<S : State> : ViewModel() {
     }
 }
 
+/**
+ * Интерфейс состояния View
+ */
 interface State
 
+/**
+ * Интерфейс SingleLiveEvent'a
+ * @see org.disf.app.mobileuptrainee.presentation.model.event
+ */
 interface Event

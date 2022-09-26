@@ -17,6 +17,12 @@ import org.disf.app.mobileuptrainee.presentation.model.event.NavigationEvent
 import org.disf.app.mobileuptrainee.presentation.model.event.PopNavigationEvent
 import org.disf.app.mobileuptrainee.presentation.model.event.ShowErrorSnackBar
 
+/**
+ * Абстрактный класс фрагмента
+ * @param B - Вьюбиндинг View
+ * @param S - Класс стейта View
+ * @param V - Класс вьюмодели фрагмента
+ */
 abstract class BaseFragment<B : ViewBinding, S : State, V : BaseViewModel<S>> : Fragment() {
 
     abstract val viewModel: V

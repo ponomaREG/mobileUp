@@ -9,6 +9,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.disf.app.mobileuptrainee.databinding.FragmentHomeBinding
 import org.disf.app.mobileuptrainee.presentation.base.BaseFragment
 
+/**
+ * Экран списка криптовалюты
+ */
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeState, HomeViewModel>() {
 
